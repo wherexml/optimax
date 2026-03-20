@@ -1,7 +1,8 @@
 import { useState, useMemo, useCallback } from 'react'
-import { Download, ChevronDown, ChevronRight } from 'lucide-react'
+import { Download } from 'lucide-react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { toast } from 'sonner'
+import { format } from 'date-fns'
 
 import { DataTable } from '@/components/DataTable'
 import { FilterBar, type FilterFieldConfig, type FilterValues } from '@/components/filter'
@@ -72,6 +73,14 @@ const mockAuditLogs: AuditEntry[] = [
   { id: 'a-030', operator: '赵强', time: '2026-03-18 16:30:00', actionType: 'update', targetObject: '供应商:上海芯片科技', prevValue: '状态: 活跃', newValue: '状态: 暂停', ip: '10.0.1.103' },
   { id: 'a-031', operator: '张伟', time: '2026-03-18 15:00:00', actionType: 'login', targetObject: '用户:张伟', prevValue: '-', newValue: '登录成功', ip: '10.0.3.12' },
   { id: 'a-032', operator: '王芳', time: '2026-03-18 14:00:00', actionType: 'export', targetObject: '报告:风险事件明细', prevValue: '-', newValue: '格式: PDF, 范围: 本月', ip: '10.0.1.104' },
+  { id: 'a-033', operator: '张伟', time: '2026-03-17 16:20:00', actionType: 'update', targetObject: '系统:邮件服务器配置', prevValue: 'SMTP: smtp.old.com', newValue: 'SMTP: smtp.new.com', ip: '10.0.1.101' },
+  { id: 'a-034', operator: '李明', time: '2026-03-17 14:30:00', actionType: 'create', targetObject: '用户:新员工入职账号', prevValue: '-', newValue: '姓名: 王五, 部门: 风控', ip: '10.0.1.102' },
+  { id: 'a-035', operator: '赵强', time: '2026-03-17 11:00:00', actionType: 'export', targetObject: '数据:供应商清单', prevValue: '-', newValue: '格式: CSV, 范围: 全部', ip: '10.0.1.103' },
+  { id: 'a-036', operator: '周敏', time: '2026-03-16 17:45:00', actionType: 'update', targetObject: '规则:交期延迟预警', prevValue: '阈值: 3天', newValue: '阈值: 5天', ip: '10.0.1.107' },
+  { id: 'a-037', operator: '张伟', time: '2026-03-16 09:15:00', actionType: 'approve', targetObject: '审批:系统维护窗口', prevValue: '待审批', newValue: '已通过', ip: '10.0.1.101' },
+  { id: 'a-038', operator: '孙磊', time: '2026-03-15 16:00:00', actionType: 'update', targetObject: '数据源:国际航运追踪API', prevValue: '频率: 每2小时', newValue: '频率: 每小时', ip: '10.0.1.108' },
+  { id: 'a-039', operator: '王芳', time: '2026-03-15 10:30:00', actionType: 'create', targetObject: '任务:月度数据归档', prevValue: '-', newValue: '执行人: 系统, 周期: 月', ip: '10.0.1.104' },
+  { id: 'a-040', operator: '陈静', time: '2026-03-14 15:20:00', actionType: 'escalate', targetObject: '事件:供应商质量异常', prevValue: '级别: 中危', newValue: '级别: 高危', ip: '10.0.1.105' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -97,6 +106,12 @@ const actionBadge: Record<AuditActionType, { label: string; className: string }>
 
 const filterFields: FilterFieldConfig[] = [
   {
+    key: 'timeRange',
+    label: '时间范围',
+    type: 'date-range',
+    placeholder: '选择时间范围',
+  },
+  {
     key: 'operator',
     label: '操作者',
     type: 'select',
@@ -115,12 +130,30 @@ const filterFields: FilterFieldConfig[] = [
     })),
   },
   {
-    key: 'time',
-    label: '时间范围',
-    type: 'date-range',
-    placeholder: '选择时间范围',
+    key: 'targetObject',
+    label: '目标对象',
+    type: 'text',
+    placeholder: '搜索目标对象',
   },
 ]
+
+// ---------------------------------------------------------------------------
+// CSV Export helper
+// ---------------------------------------------------------------------------
+
+function generateCSV(data: AuditEntry[]): string {
+  const headers = ['操作者', '时间', '动作类型', '目标对象', '变更前', '变更后', 'IP地址']
+  const rows = data.map((entry) => [
+    entry.operator,
+    entry.time,
+    actionBadge[entry.actionType].label,
+    entry.targetObject,
+    entry.prevValue,
+    entry.newValue,
+    entry.ip,
+  ])
+  return [headers.join(','), ...rows.map((r) => r.map((cell) => `"${cell}"`).join(','))].join('\n')
+}
 
 // ---------------------------------------------------------------------------
 // Expandable row for prev/new values
@@ -133,39 +166,22 @@ function ExpandableValues({
   prev: string
   next: string
 }) {
-  const [expanded, setExpanded] = useState(false)
-
   if (prev === '-' && next === '-') {
     return <span className="text-gray-400">-</span>
   }
 
   return (
-    <div>
-      <button
-        className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800"
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? (
-          <ChevronDown className="h-3 w-3" />
-        ) : (
-          <ChevronRight className="h-3 w-3" />
-        )}
-        {expanded ? '收起' : '查看变更'}
-      </button>
-      {expanded && (
-        <div className="mt-1 space-y-1 rounded bg-gray-50 p-2 text-xs">
-          {prev !== '-' && (
-            <div>
-              <span className="text-gray-400">变更前: </span>
-              <span className="text-red-600">{prev}</span>
-            </div>
-          )}
-          {next !== '-' && (
-            <div>
-              <span className="text-gray-400">变更后: </span>
-              <span className="text-green-600">{next}</span>
-            </div>
-          )}
+    <div className="space-y-1">
+      {prev !== '-' && (
+        <div className="flex items-center gap-1 text-xs">
+          <span className="text-gray-400">前:</span>
+          <span className="text-red-600 line-through">{prev}</span>
+        </div>
+      )}
+      {next !== '-' && (
+        <div className="flex items-center gap-1 text-xs">
+          <span className="text-gray-400">后:</span>
+          <span className="text-green-600">{next}</span>
         </div>
       )}
     </div>
@@ -182,22 +198,57 @@ export default function AuditLog() {
   const filteredData = useMemo(() => {
     let result = mockAuditLogs
 
-    if (filters.operator) {
-      result = result.filter(
-        (l) => l.operator === (filters.operator as string),
-      )
+    // Time range filter
+    if (filters.timeRange) {
+      const dateRange = filters.timeRange as { from?: Date; to?: Date }
+      if (dateRange.from || dateRange.to) {
+        result = result.filter((entry) => {
+          const entryDate = new Date(entry.time.replace(' ', 'T'))
+          if (dateRange.from && entryDate < dateRange.from) return false
+          if (dateRange.to) {
+            const endOfDay = new Date(dateRange.to)
+            endOfDay.setHours(23, 59, 59, 999)
+            if (entryDate > endOfDay) return false
+          }
+          return true
+        })
+      }
     }
+
+    // Operator filter
+    if (filters.operator) {
+      result = result.filter((l) => l.operator === (filters.operator as string))
+    }
+
+    // Action type filter
     if (filters.actionType && (filters.actionType as string[]).length > 0) {
       const types = filters.actionType as string[]
       result = result.filter((l) => types.includes(l.actionType))
+    }
+
+    // Target object search
+    if (filters.targetObject) {
+      const search = (filters.targetObject as string).toLowerCase()
+      result = result.filter((l) => l.targetObject.toLowerCase().includes(search))
     }
 
     return result
   }, [filters])
 
   const handleExport = useCallback(() => {
-    toast.success('审计日志导出任务已创建，请稍后在下载中心查看')
-  }, [])
+    const csv = generateCSV(filteredData)
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    const url = URL.createObjectURL(blob)
+    link.setAttribute('href', url)
+    link.setAttribute('download', `audit-log-${format(new Date(), 'yyyyMMdd-HHmmss')}.csv`)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    toast.success(`已导出 ${filteredData.length} 条审计日志`, {
+      description: 'CSV文件下载已开始',
+    })
+  }, [filteredData])
 
   const columns: ColumnDef<AuditEntry, unknown>[] = useMemo(
     () => [
@@ -237,7 +288,7 @@ export default function AuditLog() {
       {
         accessorKey: 'targetObject',
         header: '目标对象',
-        size: 240,
+        size: 280,
         cell: ({ row }) => (
           <span className="text-sm text-gray-700">
             {row.original.targetObject}
@@ -277,7 +328,7 @@ export default function AuditLog() {
             审计日志
           </h2>
           <p className="mt-1 text-sm text-gray-500">
-            查看系统操作审计轨迹
+            查看系统操作审计轨迹（共 {filteredData.length} 条）
           </p>
         </div>
         <Button
@@ -287,7 +338,7 @@ export default function AuditLog() {
           onClick={handleExport}
         >
           <Download className="h-4 w-4" />
-          导出
+          导出 CSV
         </Button>
       </div>
 

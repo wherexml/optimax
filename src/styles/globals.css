@@ -4,42 +4,42 @@
 
 @layer base {
   :root {
-    /* --- shadcn/ui variables --- */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* --- shadcn/ui variables (Light) --- */
+    --background: 210 25% 97%;
+    --foreground: 210 40% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 210 40% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --popover-foreground: 210 40% 15%;
+    --primary: 205 63% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 210 40% 25%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 45%;
+    --accent: 210 25% 95%;
+    --accent-foreground: 210 40% 25%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 205 63% 23%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 210 40% 20%;
+    --sidebar-primary: 205 63% 23%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 25% 96%;
+    --sidebar-accent-foreground: 210 40% 20%;
+    --sidebar-border: 210 20% 90%;
+    --sidebar-ring: 205 63% 23%;
 
-    /* --- OptiMax Brand --- */
+    /* --- OptiMax Brand (Light) --- */
     --brand-primary: #173F5F;
     --brand-50: #E8EEF3;
     --brand-100: #D1DDE7;
@@ -59,7 +59,7 @@
     --accent-brand-600: #2563EB;
     --accent-brand-700: #1D4ED8;
 
-    /* --- Semantic Colors --- */
+    /* --- Semantic Colors (Light) --- */
     --color-success: #2E8B57;
     --color-success-bg: #F0FDF4;
     --color-success-border: #BBF7D0;
@@ -80,7 +80,7 @@
     --color-info-border: #BFDBFE;
     --color-info-text: #1E40AF;
 
-    /* --- Severity --- */
+    /* --- Severity (Light) --- */
     --severity-critical: #D64545;
     --severity-critical-bg: #FEF2F2;
     --severity-critical-border: #FECACA;
@@ -106,7 +106,7 @@
     --severity-info-border: #BFDBFE;
     --severity-info-text: #1E40AF;
 
-    /* --- Status --- */
+    /* --- Status (Light) --- */
     --status-new: #2F6FED;
     --status-new-bg: #EFF6FF;
     --status-investigating: #D98A00;
@@ -120,7 +120,7 @@
     --status-rejected: #DC2626;
     --status-rejected-bg: #FEF2F2;
 
-    /* --- Neutral --- */
+    /* --- Neutral (Light) --- */
     --neutral-0: #FFFFFF;
     --neutral-50: #F5F8FC;
     --neutral-100: #E8EDF5;
@@ -133,13 +133,7 @@
     --neutral-800: #1F2937;
     --neutral-900: #111827;
 
-    /* --- Typography --- */
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas,
-      'Courier New', monospace;
-
-    /* --- Shadows --- */
+    /* --- Shadows (Light) --- */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
@@ -162,39 +156,146 @@
     --spacing-header-height: 56px;
   }
 
+  /* --- Dark Theme --- */
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* --- shadcn/ui variables (Dark) --- */
+    --background: 210 40% 8%;
+    --foreground: 210 20% 95%;
+    --card: 210 35% 10%;
+    --card-foreground: 210 20% 95%;
+    --popover: 210 35% 10%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 205 70% 55%;
+    --primary-foreground: 210 40% 8%;
+    --secondary: 210 25% 18%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 210 20% 20%;
+    --muted-foreground: 210 15% 60%;
+    --accent: 210 25% 20%;
+    --accent-foreground: 210 20% 95%;
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 22%;
+    --input: 210 20% 22%;
+    --ring: 205 70% 55%;
+    --chart-1: 220 70% 55%;
+    --chart-2: 160 60% 50%;
+    --chart-3: 30 80% 60%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 340 75% 60%;
+    --sidebar-background: 210 35% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 205 70% 55%;
+    --sidebar-primary-foreground: 210 40% 8%;
+    --sidebar-accent: 210 25% 18%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 210 20% 22%;
+    --sidebar-ring: 205 70% 55%;
+
+    /* --- OptiMax Brand (Dark) --- */
+    --brand-primary: #4A90C2;
+    --brand-50: #0D1A24;
+    --brand-100: #132536;
+    --brand-200: #1A3449;
+    --brand-300: #26455C;
+    --brand-400: #356B8A;
+    --brand-500: #4A90C2;
+    --brand-600: #6BA5D1;
+    --brand-700: #8CBAD8;
+    --brand-800: #ADCFE5;
+    --brand-900: #CEE4F2;
+
+    --accent-brand: #60A5FA;
+    --accent-brand-50: #0F172A;
+    --accent-brand-100: #1E293B;
+    --accent-brand-500: #60A5FA;
+    --accent-brand-600: #7CB8FB;
+    --accent-brand-700: #98CBFC;
+
+    /* --- Semantic Colors (Dark) --- */
+    --color-success: #4ADE80;
+    --color-success-bg: #064E3B;
+    --color-success-border: #059669;
+    --color-success-text: #86EFAC;
+
+    --color-warning: #FBBF24;
+    --color-warning-bg: #78350F;
+    --color-warning-border: #B45309;
+    --color-warning-text: #FCD34D;
+
+    --color-danger: #F87171;
+    --color-danger-bg: #7F1D1D;
+    --color-danger-border: #B91C1C;
+    --color-danger-text: #FCA5A5;
+
+    --color-info: #60A5FA;
+    --color-info-bg: #1E3A5F;
+    --color-info-border: #3B82F6;
+    --color-info-text: #93C5FD;
+
+    /* --- Severity (Dark) --- */
+    --severity-critical: #F87171;
+    --severity-critical-bg: #7F1D1D;
+    --severity-critical-border: #B91C1C;
+    --severity-critical-text: #FCA5A5;
+
+    --severity-high: #FB923C;
+    --severity-high-bg: #7C2D12;
+    --severity-high-border: #C2410C;
+    --severity-high-text: #FDBA74;
+
+    --severity-medium: #FBBF24;
+    --severity-medium-bg: #78350F;
+    --severity-medium-border: #B45309;
+    --severity-medium-text: #FCD34D;
+
+    --severity-low: #4ADE80;
+    --severity-low-bg: #064E3B;
+    --severity-low-border: #059669;
+    --severity-low-text: #86EFAC;
+
+    --severity-info: #60A5FA;
+    --severity-info-bg: #1E3A5F;
+    --severity-info-border: #3B82F6;
+    --severity-info-text: #93C5FD;
+
+    /* --- Status (Dark) --- */
+    --status-new: #60A5FA;
+    --status-new-bg: #1E3A5F;
+    --status-investigating: #FBBF24;
+    --status-investigating-bg: #78350F;
+    --status-in-progress: #A78BFA;
+    --status-in-progress-bg: #4C1D95;
+    --status-resolved: #4ADE80;
+    --status-resolved-bg: #064E3B;
+    --status-archived: #9CA3AF;
+    --status-archived-bg: #374151;
+    --status-rejected: #F87171;
+    --status-rejected-bg: #7F1D1D;
+
+    /* --- Neutral (Dark) --- */
+    --neutral-0: #0F172A;
+    --neutral-50: #1E293B;
+    --neutral-100: #334155;
+    --neutral-200: #475569;
+    --neutral-300: #64748B;
+    --neutral-400: #94A3B8;
+    --neutral-500: #CBD5E1;
+    --neutral-600: #E2E8F0;
+    --neutral-700: #F1F5F9;
+    --neutral-800: #F8FAFC;
+    --neutral-900: #FFFFFF;
+
+    /* --- Shadows (Dark) --- */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 4px 12px -1px rgba(0, 0, 0, 0.4);
+    --shadow-dropdown: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+    --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    --shadow-focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.35);
   }
 }
 
@@ -209,7 +310,7 @@
   }
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling (Light) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -225,6 +326,19 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400;
+}
+
+/* Scrollbar styling (Dark) */
+.dark ::-webkit-scrollbar-track {
+  background-color: var(--neutral-100);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-300);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--neutral-400);
 }
 
 @layer utilities {

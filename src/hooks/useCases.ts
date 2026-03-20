@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { Case } from '@/mocks/data/cases'
+import type { Case } from '@/types/case'
 
 export function useCases() {
   return useQuery<Case[]>({

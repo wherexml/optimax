@@ -22,6 +22,7 @@ import { Separator } from '@/components/ui/separator'
 import { RiskScorePanel } from '@/components/supplier/RiskScorePanel'
 import { AlertHistory } from '@/components/supplier/AlertHistory'
 import { NetworkRelation } from '@/components/supplier/NetworkRelation'
+import { AlternativeComparison } from '@/components/supplier/AlternativeComparison'
 import { findSupplierById } from '@/mocks/data/suppliers'
 
 import type { SupplierStatus, SupplierSensitivity } from '@/types/enums'
@@ -176,6 +177,7 @@ export default function SupplierProfile() {
           <TabsTrigger value="risk">风险评分</TabsTrigger>
           <TabsTrigger value="alerts">预警历史</TabsTrigger>
           <TabsTrigger value="network">网络关系</TabsTrigger>
+          <TabsTrigger value="alternatives">替代对比</TabsTrigger>
         </TabsList>
 
         {/* === Tab 1: Basic Info === */}
@@ -305,6 +307,16 @@ export default function SupplierProfile() {
             sites={supplier.sites}
             materials={supplier.materials}
             relatedOrders={supplier.related_orders}
+          />
+        </TabsContent>
+
+        {/* === Tab 5: Alternative Comparison === */}
+        <TabsContent value="alternatives">
+          <AlternativeComparison
+            currentSupplierId={supplier.supplier_id}
+            currentSupplierName={supplier.name}
+            currentRiskScore={supplier.risk_score}
+            currentLeadTimeDays={28}
           />
         </TabsContent>
       </Tabs>

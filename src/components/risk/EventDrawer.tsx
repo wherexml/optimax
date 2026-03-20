@@ -32,6 +32,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { SeverityBadge } from '@/components/common/SeverityBadge'
 import { StatusBadge } from '@/components/common/StatusBadge'
 import { Timeline, type TimelineItemData } from '@/components/common/Timeline'
+import { AISuggestionPanel } from './AISuggestionPanel'
 
 import type { RiskEventListItem } from '@/types/event'
 import type { ImpactObjectType } from '@/types/enums'
@@ -40,6 +41,7 @@ import {
   generateActivities,
   generateSources,
 } from '@/mocks/data/events'
+import { getAISuggestionsForEvent } from '@/mocks/data/suggestions'
 
 // ---------------------------------------------------------------------------
 // Impact object icon
@@ -97,6 +99,10 @@ export function EventDrawer({ event, onClose }: EventDrawerProps) {
   )
   const sources = useMemo(
     () => (event ? generateSources(event.event_id) : []),
+    [event]
+  )
+  const aiSuggestions = useMemo(
+    () => (event ? getAISuggestionsForEvent(event.event_id) : null),
     [event]
   )
 
@@ -178,6 +184,24 @@ export function EventDrawer({ event, onClose }: EventDrawerProps) {
                 )}
 
                 <Separator />
+
+                {/* AI Suggestions */}
+                {aiSuggestions && (
+                  <section>
+                    <AISuggestionPanel
+                      eventId={event.event_id}
+                      mappingSuggestions={aiSuggestions.mappingSuggestions}
+                      severitySuggestion={aiSuggestions.severitySuggestion}
+                      similarCases={aiSuggestions.similarCases}
+                      onAcceptMapping={(id) => console.log('Accept mapping:', id)}
+                      onRejectMapping={(id) => console.log('Reject mapping:', id)}
+                      onAcceptSeverity={() => console.log('Accept severity')}
+                      onRejectSeverity={() => console.log('Reject severity')}
+                      onViewCaseDetail={(caseId) => console.log('View case:', caseId)}
+                    />
+                    <Separator className="mt-6" />
+                  </section>
+                )}
 
                 {/* Related objects */}
                 <section>

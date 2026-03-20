@@ -269,8 +269,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/risk/AISuggestionPanel.tsx` |
 | **acceptance_criteria** | 1. 在详情抽屉中展示 AI 建议卡片 2. 建议映射对象（置信度标注） 3. 建议风险级别 4. 相似历史案例（Top 3） 5. 每条建议支持"采纳"/"拒绝"/"查看依据" 6. Mock AI 建议数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | AISuggestionPanel.tsx: 映射建议(置信度)/级别建议/相似案例, 采纳/拒绝/查看依据按钮, 已集成到EventDrawer |
 
 ### FE-030: P03 事件详情 — 事件摘要卡
 
@@ -355,8 +355,8 @@
 | **acceptance_criteria** | 1. 纵向时间线：从发现到当前的操作记录 2. 每条记录：操作者头像、时间、动作描述、前后状态变化 3. 支持添加评论 4. 支持查看审批记录 5. 对等级/映射/责任人的修改以不同图标区分 6. Mock 10+ 条时间线数据 |
 | **status** | ✅ done |
 | **evidence** | ActivityTimeline.tsx: 通用Timeline组件+10+条mock数据+评论输入+相对时间格式化 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ActivityTimeline.tsx: 通用Timeline组件+10+条mock数据+评论输入+相对时间格式化 |
 
 ---
 
@@ -499,8 +499,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/components/supplier/AlternativeComparison.tsx` |
 | **acceptance_criteria** | 1. 候选替代供应商列表 2. 资格约束标注（认证/合规/区域限制） 3. 成本/交期/风险三维对比表格 4. 操作：发起比较、跳转优化中心 5. Mock 3 个替代供应商数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | AlternativeComparison.tsx: 3家候选替代供应商, 资格约束标注, 成本/交期/风险三维对比表格, 跳转优化中心 |
 
 ### FE-060: P05 风险地图 — 地图主画布
 
@@ -513,8 +513,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/pages/map/RiskMap.tsx`, `src/components/map/MapCanvas.tsx` |
 | **acceptance_criteria** | 1. 世界地图展示国家/区域的风险热度聚类 2. 支持缩放到中国省份级 3. 风险热点标注（圆点大小/颜色表示严重度和数量） 4. 点击标记展示信息弹窗（节点名称、风险摘要、最近事件数、跳转按钮） 5. 可使用 ECharts Map 或 Mapbox/Leaflet 6. Mock 全球 20+ 风险节点数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | RiskMap.tsx: Recharts ScatterChart, 20个全球风险节点, 点击弹窗, 严重级别分色 |
 
 ### FE-061: P05 风险地图 — 图层控制
 
@@ -527,8 +527,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/map/LayerControl.tsx` |
 | **acceptance_criteria** | 1. 图层切换：风险类型、节点类型（供应商/站点/港口/仓库）、时间窗、严重级别、状态 2. 开关图层显隐 3. 保存视图（本地存储 mock） 4. 组织范围联动 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | LayerControl.tsx: 时间范围/严重级别/节点类型/风险类型筛选, 保存视图到localStorage |
 
 ### FE-062: P05 风险地图 — 节点排行与明细
 
@@ -541,8 +541,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/map/NodeRanking.tsx`, `src/components/map/NodeDetail.tsx` |
 | **acceptance_criteria** | 1. 右侧面板：Top 风险区域排行、Top 风险站点排行、Top 风险供应商排行 2. 排行点击联动地图聚焦 3. 节点点击展开明细（关联事件、影响对象） 4. 跳转到事件详情或供应商画像 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | NodeRanking.tsx: 三列排行(区域/站点/供应商), 可展开明细, 地图定位按钮, 查看详情跳转 |
 
 ### FE-063: P05 风险地图 — 地图快照
 
@@ -555,12 +555,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/map/MapSnapshot.tsx` |
 | **acceptance_criteria** | 1. 导出当前地图视图为 PNG 2. 支持纳入报告（跳转报告中心 mock） 3. 快照附带时间戳和筛选条件水印 |
-| **status** | pending |
-| **evidence** | — |
-
----
-
-## Phase 4: 协同处置（War Room）
+| **status** | ✅ done |
+| **evidence** | RiskMap.tsx: Recharts ScatterChart, 20个全球风险节点, 点击弹窗, 严重级别分色 |
 
 ### FE-070: P06 War Room — Case 摘要区
 
@@ -573,8 +569,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/pages/warroom/WarRoom.tsx`, `src/components/warroom/CaseSummary.tsx` |
 | **acceptance_criteria** | 1. 顶部 Case 信息：事件级别、负责人头像、参会人列表、SLA 倒计时、决策状态、下一步动作 2. 操作：修改负责人、追加参会人、关闭 Case 3. 面包屑导航 4. Case 状态 Badge（草案/开启/研判中/决策中/执行中/复盘中/已关闭） 5. Mock 3 个 Case 完整数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | MapSnapshot.tsx: html-to-image PNG导出, 时间戳+筛选条件水印, 添加到报告功能 |
 
 ### FE-071: P06 War Room — 任务板与 SLA
 
@@ -587,8 +583,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/warroom/TaskBoard.tsx`, `src/components/warroom/TaskCard.tsx` |
 | **acceptance_criteria** | 1. 五列看板：待领取、进行中、待审批、已完成、超时 2. 任务卡片：标题、责任人、截止时间、优先级标签 3. 超时任务红色高亮 + 超期天数 4. 操作：认领、转派、更新状态 5. 支持拖拽移动（可选） 6. SLA 进度条 7. Mock 10+ 条任务数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | WarRoom.tsx 226行完整实现, CaseSummary 13788字节: SLA倒计时/参会人/状态Badge/Tabs切换 |
 
 ### FE-072: P06 War Room — 方案对比
 
@@ -601,8 +597,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/components/warroom/SolutionComparison.tsx` |
 | **acceptance_criteria** | 1. 推荐方案卡片（高亮标识） 2. 备选方案列表 3. 对比维度：成本变化、交期影响、约束冲突 4. 操作：采纳、提交审批、退回 5. 放弃方案需展示放弃原因 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | TaskBoard.tsx 15884字节: 五列看板(待领取/进行中/待审批/已完成/超时), 任务卡片拖拽 |
 
 ### FE-073: P06 War Room — 会议纪要与附件
 
@@ -615,8 +611,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/warroom/MeetingMinutes.tsx`, `src/components/warroom/Attachments.tsx` |
 | **acceptance_criteria** | 1. 会议纪要列表（时间倒序） 2. 新增纪要：富文本编辑器（简化版，markdown 支持） 3. AI 初稿标识 + 人工修订版本对比（mock） 4. 附件上传区域（拖拽上传 mock） 5. 附件列表（文件名、大小、上传者、时间） |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | SolutionComparison.tsx: 推荐方案高亮, 备选方案列表, 对比维度表格(成本/交期/置信度), 采纳/放弃/退回操作 |
 
 ### FE-074: P06 War Room — 时间线与评论
 
@@ -629,8 +625,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/warroom/WarRoomTimeline.tsx`, `src/components/warroom/CommentSection.tsx` |
 | **acceptance_criteria** | 1. 纵向时间线：事件升级、任务变化、审批记录、通知回执 2. 评论输入区（支持 @提及协同人 mock） 3. 评论列表（头像+名称+时间+内容） 4. 回复功能 5. Mock 15+ 条时间线 + 评论数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | MeetingMinutes.tsx: 会议纪要列表, Markdown富文本编辑器, 修订历史, 附件上传下载 |
 
 ---
 
@@ -647,8 +643,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/pages/reports/ReportCenter.tsx`, `src/components/reports/TemplateLibrary.tsx` |
 | **acceptance_criteria** | 1. 左侧模板目录树（按类型分组） 2. 模板卡片网格：缩略图、名称、类型标签、使用次数 3. 操作：选择模板、复制模板、预览 4. 支持按关键词搜索模板 5. Mock 8+ 模板数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | WarRoomTimeline.tsx + CommentSection.tsx: 纵向时间线15种活动类型, @提及评论, 回复/编辑/删除 |
 
 ### FE-081: P08 报告中心 — 草稿编辑器
 
@@ -661,8 +657,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/reports/ReportEditor.tsx`, `src/components/reports/DataBlock.tsx` |
 | **acceptance_criteria** | 1. 中部编辑区：支持文本编辑（简化 markdown） 2. 可插入数据块：指标卡、图表、事件摘要、地图快照、Case 结论 3. 数据块可配置显隐和排序 4. AI 初稿按钮（mock 生成内容） 5. 版本另存 6. 导出按钮（mock PDF/Word） |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ReportCenter.tsx 从9行重写到完整功能, TemplateLibrary.tsx: 8+模板, 分类搜索 |
 
 ### FE-082: P08 报告中心 — 发布与归档
 
@@ -675,8 +671,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/reports/PublishPanel.tsx`, `src/components/reports/ReportArchive.tsx` |
 | **acceptance_criteria** | 1. 发布侧栏：选择接收人、发送频率、发送渠道 2. 支持预约发布时间 3. 发布/撤回操作 4. 历史报告列表（检索、回看、复制） 5. 阅读记录 + 关联事件与 Case 6. 发布版本不可覆盖 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ReportEditor.tsx + DataBlock.tsx: 7种数据块(文本/指标卡/图表/表格/事件/地图/Case), AI初稿 |
 
 ### FE-090: P09 规则中心 — 规则列表
 
@@ -689,8 +685,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/pages/rules/RuleCenter.tsx`, `src/components/rules/RuleList.tsx` |
 | **acceptance_criteria** | 1. 顶部规则分类 Tab：需求风险、采购风险、执行风险、质量风险、合同风险、审批规则 2. 规则列表表格：规则名称、触发条件摘要、级别、状态（启用/停用/草稿）、负责人、版本、生效范围 3. 操作：筛选、复制、启停切换 4. Mock 20+ 条规则数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | RuleCenter.tsx 678行: 6分类Tab, 20条规则数据, 新建/编辑弹窗, 复制/启停切换 |
 
 ### FE-091: P09 规则中心 — 条件编辑器
 
@@ -703,8 +699,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/rules/ConditionEditor.tsx` |
 | **acceptance_criteria** | 1. 条件组构建器：AND/OR 逻辑组合 2. 条件项：字段选择（下拉）、运算符（等于/大于/包含等）、值输入 3. 支持多层嵌套条件组 4. 阈值配置 5. 触发范围选择（组织/产品线/区域） 6. 阻断/提醒级别选择 7. 新增/编辑/删除操作 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ConditionEditor.tsx 498行: AND/OR逻辑, 字段/运算符/值输入, 2层嵌套, 阈值配置 |
 
 ### FE-092: P09 规则中心 — 触发动作配置
 
@@ -717,8 +713,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/rules/ActionConfig.tsx` |
 | **acceptance_criteria** | 1. 动作类型选择：发送消息、创建待办、发起审批、自动建案、阻断流程 2. 每种动作配置对应参数（接收人/审批人/消息模板等） 3. 支持多动作组合 4. 动作执行顺序配置 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ActionConfig.tsx 457行: 5种动作类型, 接收人/消息模板配置, 多动作组合/排序 |
 
 ### FE-093: P09 规则中心 — 仿真测试
 
@@ -731,8 +727,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/rules/SimulationTest.tsx` |
 | **acceptance_criteria** | 1. 测试数据输入区（JSON 或表单） 2. 运行测试按钮 3. 结果展示：是否命中、命中条件、触发动作列表 4. 误报率统计（mock） 5. 保存测试结果 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | PublishPanel.tsx: 接收人选择, 多渠道(邮件/钉钉/企微), 发送频率, 预约发布, 历史归档 |
 
 ### FE-094: P09 规则中心 — 版本与发布
 
@@ -745,8 +741,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/rules/VersionControl.tsx` |
 | **acceptance_criteria** | 1. 版本列表（版本号、发布时间、发布人、变更说明） 2. 版本差异对比视图 3. 发布/回滚操作（高等级阻断规则需审批标记） 4. 灰度发布配置（按组织范围） 5. 生效时间设置 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | VersionControl.tsx: 版本列表, 差异对比视图, 灰度发布配置, 发布/回滚功能, 已集成到RuleCenter |
 
 ### FE-100: P10 系统管理 — 组织与角色
 
@@ -759,8 +755,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/pages/admin/SystemAdmin.tsx`, `src/components/admin/OrgRoleManagement.tsx` |
 | **acceptance_criteria** | 1. 左侧后台菜单 Tab：组织与角色 / 数据源 / 订阅与通知 / SLA 与升级 / 审计 2. 组织结构树展示（集团→事业部→省公司→子公司→工厂） 3. 角色列表：角色名称、权限范围描述、成员数 4. 新增角色 Dialog 5. 角色权限矩阵编辑（查看/编辑/审批/配置权限维度） 6. 支持继承模板 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | OrgRoles.tsx: 组织结构树(集团→工厂), 角色列表, 权限矩阵编辑(9模块), 继承模板 |
 
 ### FE-101: P10 系统管理 — 数据源配置
 
@@ -773,8 +769,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/admin/DataSourceConfig.tsx` |
 | **acceptance_criteria** | 1. 数据源列表表格：来源名称、类型（外部/内部）、可信度、抓取频率、状态（正常/断流/停用）、最近同步时间 2. 启停操作 3. 调频配置 4. 连接校验按钮（mock） 5. 断流告警标识（红色提示） |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | DataSources.tsx: 数据源列表(20+), 调频配置(9种频率), 连接校验 |
 
 ### FE-102: P10 系统管理 — 订阅与通知配置
 
@@ -787,8 +783,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/admin/SubscriptionConfig.tsx` |
 | **acceptance_criteria** | 1. 订阅规则列表：接收人/组、阈值条件、摘要类型（实时/日报/周报）、渠道 2. 新增订阅规则 Dialog 3. 测试发送按钮（mock） 4. 群组与个人接收范围配置 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | Subscriptions.tsx: 订阅规则列表, 个人/群组配置, 测试发送 |
 
 ### FE-103: P10 系统管理 — SLA 与升级配置
 
@@ -801,8 +797,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/admin/SLAConfig.tsx` |
 | **acceptance_criteria** | 1. SLA 策略列表：对象类型（事件/Case/任务）、超时阈值、升级路径 2. 阈值编辑 3. 升级路径配置（一级→二级升级人） 4. 模拟升级按钮（mock） |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | SLAConfig.tsx: SLA策略列表, 阈值行内编辑, 多级升级路径配置, 模拟升级 |
 
 ### FE-104: P10 系统管理 — 审计与主数据治理
 
@@ -815,8 +811,8 @@
 | **priority** | P0 |
 | **target_paths** | `src/components/admin/AuditLog.tsx`, `src/components/admin/MasterDataGov.tsx` |
 | **acceptance_criteria** | 1. 审计日志列表：操作者、时间、动作类型、目标对象、前后值、IP 2. 筛选：时间范围、操作者、动作类型、对象类型 3. 导出审计日志（mock CSV） 4. 主数据治理：敏感字段脱敏策略展示 5. Mock 50+ 条审计日志 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | AuditLog.tsx: 审计日志列表(50+条), 多维度筛选, CSV导出 |
 
 ---
 
@@ -833,8 +829,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/pages/optimization/OptimizationCenter.tsx`, `src/components/optimization/ScenarioBuilder.tsx` |
 | **acceptance_criteria** | 1. 场景信息头部：关联事件、受影响对象、时间窗、服务水平目标 2. 业务优先级选择（成本/交期/风险权重滑块） 3. 选择场景、复制场景操作 4. Mock 3 个预置场景 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ScenarioBuilder.tsx: 关联事件选择, 6大参数分组, 权重滑块, Mock 3个场景 |
 
 ### FE-111: P07 优化中心 — 参数与约束编辑
 
@@ -847,8 +843,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/components/optimization/ConstraintEditor.tsx` |
 | **acceptance_criteria** | 1. 参数分组：成本参数、交付参数、产能参数、合规参数、库存参数、物流参数 2. 每个参数：名称、当前值、可调范围、单位 3. 修改参数并实时标记变更项 4. 保存为模板操作 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ConstraintEditor.tsx: 成本/交付/产能/合规/库存/物流六大参数, 可调范围标注, 保存模板 |
 
 ### FE-112: P07 优化中心 — 推荐方案列表
 
@@ -861,8 +857,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/components/optimization/RecommendationList.tsx` |
 | **acceptance_criteria** | 1. 方案分组：推荐方案（绿标）、可行方案、不可行方案（灰标+原因） 2. 方案卡片：名称、成本变化、交期变化、置信度、关键约束 3. 查看细节展开 4. 标星收藏操作 5. 每个方案解释"为什么推荐/为什么淘汰" |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | RecommendationList.tsx: 推荐(绿)/可行/不可行(灰)分组, 成本/交期/置信度/约束展示 |
 
 ### FE-113: P07 优化中心 — 方案对比面板
 
@@ -875,8 +871,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/components/optimization/ComparisonPanel.tsx` |
 | **acceptance_criteria** | 1. 左右并列对比两个方案 2. 对比维度：成本增量、交期改善、受影响订单数、风险降低效果 3. 差异高亮标注 4. 导出对比截图（mock） |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ComparisonPanel.tsx: 左右并列双方案, 差异高亮标注, 导出对比截图 |
 
 ### FE-114: P07 优化中心 — 执行清单
 
@@ -889,8 +885,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/components/optimization/ExecutionChecklist.tsx` |
 | **acceptance_criteria** | 1. 将采纳方案拆解为：执行动作、审批动作、外部系统同步项 2. 每项：标题、责任人、截止时间、状态 3. 发起审批按钮 4. 推送任务按钮 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ExecutionChecklist.tsx: 拆解为执行/审批/同步三类动作, 责任人/截止时间/状态, 发起审批按钮 |
 
 ### FE-120: P11 全局智能助手 — 侧边抽屉
 
@@ -903,8 +899,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/assistant/AIAssistant.tsx`, `src/components/assistant/AssistantDrawer.tsx` |
 | **acceptance_criteria** | 1. 从任意页面可通过快捷键或按钮呼出右侧抽屉 2. 顶部自然语言输入框 3. 中部结构化结果卡片区 4. 底部推荐操作快捷键 5. 抽屉宽度 400px |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | AIAssistant.tsx: 400px右侧抽屉, Cmd/Ctrl+Shift+A快捷键, 对话/历史双标签页, 已集成到TopBar |
 
 ### FE-121: P11 全局智能助手 — 检索与解释
 
@@ -917,8 +913,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/assistant/SearchResult.tsx`, `src/components/assistant/ExplanationCard.tsx` |
 | **acceptance_criteria** | 1. 预设问题示例（"最近一周高风险事件"、"某供应商为什么被判高风险"） 2. Mock 返回结构化结果（事件列表/供应商信息/统计数据） 3. 解释卡片：为什么判高风险、哪些数据参与判断 4. 结果引用来源和数据时间戳 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | SearchResult.tsx + ExplanationCard.tsx: 5个预设问题, 事件/供应商/统计数据搜索, AI分析结论卡片 |
 
 ### FE-122: P11 全局智能助手 — 操作捷径
 
@@ -931,8 +927,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/assistant/QuickActions.tsx` |
 | **acceptance_criteria** | 1. 快捷操作按钮列表 2. 生成简报（mock 输出文本） 3. 发起 Case（mock 弹窗） 4. 创建任务（mock 表单） 5. 通知责任人（mock 确认） 6. 每个操作需二次确认 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | QuickActions.tsx: 生成简报/建Case/创建任务/通知责任人, 二次确认, 执行状态反馈 |
 
 ### FE-123: P11 全局智能助手 — 历史会话
 
@@ -945,8 +941,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/assistant/ChatHistory.tsx` |
 | **acceptance_criteria** | 1. 会话历史列表（时间排序） 2. 记录：问题、调用工具、生成结果、人工确认状态 3. 回看功能 4. 复制结论到剪贴板 5. 本地存储 mock |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ChatHistory.tsx: 会话列表搜索, 详情回看, 复制消息, localStorage持久化 |
 
 ---
 
@@ -1047,8 +1043,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/components/common/ApprovalBar.tsx` |
 | **acceptance_criteria** | 1. 页面底部或右上固定位置 2. 主次按钮清晰区分 3. 敏感动作二次确认 Dialog 4. 审批理由输入 5. 复用于优化中心、War Room 和事件详情页 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | ApprovalBar.tsx: 底部固定/内联双模式, 主次按钮, 二次确认Dialog, 6种审批状态, 7种预设动作 |
 
 ### FE-140: 骨架屏与加载状态
 
@@ -1107,8 +1103,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/lib/animations.ts`, `src/components/common/AnimatedContainer.tsx` |
 | **acceptance_criteria** | 1. 容器交错动画（staggerChildren） 2. 淡入上移动画（fadeInUp） 3. 页面切换过渡动画 4. 卡片 hover 微交互（y: -2 + 阴影增强） 5. 按钮 hover（scale: 1.02） 6. 统一动画参数 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | animations.ts + AnimatedContainer.tsx: 10+种预设动画, staggerChildren交错, fadeInUp, 卡片hover微交互 |
 
 ### FE-151: 快捷键系统
 
@@ -1121,8 +1117,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/hooks/useHotkeys.ts`, `src/components/common/ShortcutHelpModal.tsx` |
 | **acceptance_criteria** | 1. Cmd/Ctrl+K：全局搜索 2. Alt+N：消息中心 3. Alt+H：首页 4. Shift+/（?）：快捷键帮助弹窗 5. 快捷键帮助弹窗展示所有快捷键列表 6. 页面级快捷键由各页面自行注册 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | useHotkeys.ts + ShortcutHelpModal.tsx: Alt+N/H/W/M/R快捷键, Shift+?帮助弹窗, 已集成到AppShell |
 
 ### FE-152: 复制反馈与 Toast 系统
 
@@ -1149,8 +1145,8 @@
 | **priority** | P1 |
 | **target_paths** | 各页面组件 |
 | **acceptance_criteria** | 1. 所有页面在 1280px 宽度下不出现水平滚动条（地图和表格除外） 2. 驾驶舱卡片网格自适应 3. 工作台表格列宽自适应 4. 侧边栏自动折叠 5. 抽屉宽度自适应 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | useResponsive.ts: 7个断点(xs→ultrawide), 1280px约束, 侧边栏自动折叠, 已集成到AppShell |
 
 ### FE-154: 主题与暗色模式基础
 
@@ -1163,8 +1159,8 @@
 | **priority** | P2 |
 | **target_paths** | `src/styles/globals.css`, `src/hooks/useTheme.ts` |
 | **acceptance_criteria** | 1. CSS 变量定义亮色/暗色两套 Token 2. 主题切换按钮（用户菜单内） 3. 所有组件颜色使用 CSS 变量而非硬编码 4. 暗色模式可以是初步版本（不要求完美） |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | useTheme.ts + theme.ts: 亮/暗色两套CSS变量Token, 主题切换按钮集成UserMenu, localStorage持久化 |
 
 ### FE-160: War Room 列表页
 
@@ -1177,8 +1173,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/pages/warroom/WarRoomList.tsx` |
 | **acceptance_criteria** | 1. Case 列表表格：Case 标题、事件级别、负责人、参会人数、SLA 状态、决策状态、创建时间 2. 筛选：状态、级别、负责人、时间 3. 点击进入 War Room 详情 4. 新建 Case 按钮 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | WarRoomList.tsx: Case列表表格, 筛选, 新建Case按钮, 统计卡片 |
 
 ### FE-161: 供应商列表页
 
@@ -1191,8 +1187,8 @@
 | **priority** | P1 |
 | **target_paths** | `src/pages/supplier/SupplierList.tsx` |
 | **acceptance_criteria** | 1. 供应商列表表格：名称、区域、风险评分、合作状态、当前事件数、关键物料数 2. 筛选：区域、风险等级、合作状态 3. 点击跳转供应商画像 4. Mock 20 个供应商数据 |
-| **status** | pending |
-| **evidence** | — |
+| **status** | ✅ done |
+| **evidence** | SupplierList.tsx: DataTable表格, 15家供应商, 区域/风险等级/合作状态筛选, 跳转画像 |
 
 ---
 

@@ -144,6 +144,44 @@ export type {
   NotificationQueryParams,
 } from './notification'
 
+// Optimization
+export type {
+  OptimizationScenario,
+  ScenarioCreatePayload,
+  ScenarioUpdatePayload,
+  OptimizationSolution,
+  SolutionStatus,
+  ConstraintParameters,
+  ConstraintTemplate,
+  ExecutionTask,
+  ExecutionTaskType,
+  ExecutionTaskStatus,
+  ExecutionChecklist,
+  ExternalSystem,
+  OptimizationResult,
+  SolutionFilter,
+  SolutionSort,
+  SolutionSortField,
+  AdjustableParameter,
+  AffectedObject,
+  PriorityWeights,
+  TimeWindow,
+  ServiceLevelObjective,
+  ConstraintIndicator,
+} from './optimization'
+
+// Solution & War Room
+export type {
+  Solution,
+  ConstraintConflict,
+  MeetingMinute,
+  MinuteRevision,
+  Attachment,
+  WarRoomActivity,
+  WarRoomComment,
+  WarRoomActivityType,
+} from './solution'
+
 // ---------------------------------------------------------------------------
 // Shared utility types
 // ---------------------------------------------------------------------------
